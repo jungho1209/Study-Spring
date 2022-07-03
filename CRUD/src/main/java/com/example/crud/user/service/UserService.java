@@ -33,4 +33,15 @@ public class UserService {
         userRepository.save(user);
 
     }
+
+
+    // todo 회원 삭제 기능
+    @Transactional
+    public void delete(String accountId) {
+
+        User user = userRepository.findByAccountId(accountId)
+                .orElseThrow(() -> new RuntimeException("회원이 존재하지 않습니다."));
+
+        userRepository.delete(user);
+    }
 }

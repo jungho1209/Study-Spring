@@ -15,10 +15,19 @@ public class UserController {
 
     private final UserService userService;
 
+
+    // todo 회원가입 기능
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.CREATED)
     public void signUp(@RequestBody @Valid UserRequest userRequest){
         userService.signUp(userRequest);
+    }
+
+
+    // todo 회원 삭제 기능
+    @DeleteMapping("/{account-id}")
+    public void delete(@PathVariable ("account-id") String accountId){
+        userService.delete(accountId);
     }
 
 }
